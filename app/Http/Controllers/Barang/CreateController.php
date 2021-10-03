@@ -52,6 +52,7 @@ class CreateController extends Controller
             $detail->barang_id = $request->barang_id;
             $detail->jumlah = $request->jumlah;
             $detail->harga_beli = $request->harga_beli;
+            $detail->PPN = $request->PPN;
             if($detail->save())
             {
                 $request->session()->flash('alert-success', 'Data barang telah ditambahkan.');
@@ -94,6 +95,7 @@ class CreateController extends Controller
         $edit = BarangDetail::where('id',$id)->first();
         $edit->harga_beli = $data['harga_beli'];
         $edit->jumlah = $data['stok'];
+        $edit->PPN = $data['PPN'];
         // dd($edit,$data);
         if($edit->save()){
             $data->session()->flash('alert-success', 'Data barang berhasil diperbarui.');

@@ -28,6 +28,13 @@
                                     <input type="number" class="form-control" id="satuanbarang" name="jumlah" autocomplete="off">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">PPN (%)</label>
+
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="satuanbarang" name="PPN" autocomplete="off" value="10">
+                                </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
