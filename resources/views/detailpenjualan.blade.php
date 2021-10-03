@@ -72,6 +72,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah</th>
                                 <th>Harga Satuan</th>
+                                <th>PPN</th>
                                 <th>Subtotal</th>
                             </tr>
                             </thead>
@@ -79,16 +80,21 @@
                             @foreach($detail as $a)
                             <tr>
                             @if(!empty($a->total_satuan && $a->harga_satuan))
-                            @php $number = number_format("$a->total_satuan",2,",","."); 
-                            $number2 = number_format("$a->harga_satuan",2,",",".") @endphp
+                            @php $number = number_format("$a->total_satuan",2,",",".");
+                            $harga_satuan_real = $a->harga_satuan * 100 / 110;
+                            $number2 = number_format("$harga_satuan_real",2,",",".");
+                            $PPN = ($a->harga_satuan - $harga_satuan_real); 
+                            $number3 = number_format("$PPN",2,",",".")@endphp
                             @endif
                                 <td>{{ $a->barang->nama}}</td>
                                 <td>{{ $a->jumlah}}</td>
                                 <td>Rp {{ $number2}}</td>
+                                <td>Rp {{$number3}}</td>
                                 <td>Rp {{ $number }}</td>
                             </tr>
                             @endforeach
                             <tr>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -98,6 +104,7 @@
                             @php $number = number_format("$penjualan->total_akhir",2,",","."); @endphp
                             @endif
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

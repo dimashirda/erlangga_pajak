@@ -60,7 +60,7 @@
                                 <th>Satuan</th>
                                 <th>Harga Jual</th>
                                 <th>Harga Beli</th>
-                                <th>PPN(%)</th>
+                                <!-- <th>PPN(%)</th> -->
                                 <th>Stok</th>
                                 @if(Auth::User()->role == 1)
                                 <th style="text-align: center" colspan="2">Action</th>
@@ -79,7 +79,7 @@
                                 <td>{{ $a->barang->satuan}}</td>
                                 <td>{{ $a->barang->harga_jual}}</td>
                                 <td>{{ $a->harga_beli }}</td>
-                                <td>{{ $a->PPN }}%</td>
+                                <!-- <td>{{ $a->PPN }}%</td> -->
                                 <td>{{ $a->jumlah }}</td>
                                 @if(Auth::User()->role == 1)
                                 <td align="center" width="30px">
@@ -130,14 +130,14 @@
                                                 <input type="number" autocomplete="off" class="form-control" id="hargabeli" name="harga_beli">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="PPN" class="col-sm-2 control-label">PPN(%)</label>
 
                                             <div class="col-sm-10">
                                                 <input type="number" autocomplete="off" class="form-control" id="PPN" name="PPN">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+ -->                                        <div class="form-group">
                                             <label for="HargaBeli" class="col-sm-2 control-label">Stok</label>
 
                                             <div class="col-sm-10">
@@ -188,7 +188,7 @@
             var id = $(this).data('id');
             var harga_beli = $(this).data('hargabeli');
             var stok = $(this).data('stok');
-            var ppn = $(this).data('ppn');
+            // var ppn = $(this).data('ppn');
             //console.log(id);
             //console.log(val(nama_barang));
             $("#id").val(id);
@@ -196,7 +196,7 @@
             $("#namabarang").val(nama_barang);
             $("#hargabeli").val(harga_beli);   
             $("#stok").val(stok);
-            $("#PPN").val(ppn);
+            // $("#PPN").val(ppn);
             
             $("#form-edit").attr('action','{{url('/barangdetail/edit')}}' + '/' + id);
         });

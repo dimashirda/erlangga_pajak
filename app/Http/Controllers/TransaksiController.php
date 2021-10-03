@@ -90,6 +90,7 @@ class TransaksiController extends Controller
             $penjualan->total_akhir = $req->input('harga_akhir');
             $penjualan->kembalian = $req->input('uang_kembalian');
             $penjualan->uang_dibayar = $req->input('uang_tunai');
+            // dd($penjualan);
             $penjualan->save();
             if(!empty($req->giro))
                 app('App\Http\Controllers\Giro\CreateController')->create($penjualan->id,$req->no_seri_giro,$req->tanggal_pencairan,$req->nominal_giro); //buat record giro
@@ -116,12 +117,16 @@ class TransaksiController extends Controller
             // dd($value);
             if(empty($value))
                 continue;
+            $barang = Barang::where('id',$value)->first();
             $detail = new Penjualan_detail;
             $detail->penjualan_id = $penjualan;
             $detail->barang_id = $value;
             $detail->jumlah = $jumlah[$key];
             $detail->total_satuan = $subtotal[$key];
             $detail->harga_satuan = $harga_satuan[$key];
+            // $PPN = $barang->PPN * $subtotal[$key] / 100;
+            // $detail->PPN = $PPN;
+            // dd($detail);
             $detail->save();
             $flag = $this->logKeuntungan($detail,2);
             if($flag == -1)

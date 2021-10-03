@@ -121,12 +121,12 @@
 	<table>
 		<thead>
 			<tr>
-				<td class="double centered" width="5%">No</td>
-				<td class="double centered" width="35%">NAMA BARANG</td>
-				<td class="double" width="12%">SATUAN</td>
+				<td class="double centered" width="2%">No</td>
+				<td class="double centered" width="23%">NAMA BARANG</td>
+				<td class="double" width="10%">SATUAN</td>
 				<td class="double" width="7%">JML</td>
 				<td class="double centered" width="19%">HARGA</td>
-				<td class="double" width="1%"></td>
+				<td class="double" width="19%">PPN</td>
 				<td class="double centered" width="20%">TOTAL</td>
 			</tr>
 		</thead>
@@ -142,10 +142,20 @@
 				<td>{{$item->barang->nama}}</td>
 				<td>{{$item->barang->satuan}}</td>
 				<td>{{$item->jumlah}}</td>
-				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;">{{number_format($item->harga_satuan,0,",",".")}}</a></td>
+				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">
+				@php $harga_satuan_real = $item->harga_satuan * 100 / 110; @endphp
+				{{
+					number_format($harga_satuan_real,0,",",".")
+				}}</a></td>
+				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">
+				@php $PPN = ($item->harga_satuan - $harga_satuan_real); @endphp
+				{{
+					number_format($PPN,0,",",".") 
+				}}	
+				</a></td>
 				<!-- <td>@if(!empty($data['penjualan']->diskon)) <a style="text-align: left !important;"> Rp </a> <a style="float: right;">{{number_format($data['penjualan']->diskon,0,",",".")}} @else Rp 0 @endif </a></td> -->
-				<td>&nbsp;</td>
-				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;">{{number_format($item->harga_satuan * $item->jumlah,0,",",".")}}</a></td>
+				<!-- <td>&nbsp;</td> -->
+				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">{{number_format($item->harga_satuan * $item->jumlah,0,",",".")}}</a></td>
 				@php $total += $item->harga_satuan * $item->jumlah; @endphp
 			</tr>
 			@php $i++; @endphp
