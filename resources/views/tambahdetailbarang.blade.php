@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','CV Erlangga')
+@section('title','CV ERLANGGA PAJAK')
 
 @section('content')
         <div class="col-md-12">

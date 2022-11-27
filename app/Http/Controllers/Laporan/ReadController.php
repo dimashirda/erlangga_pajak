@@ -12,8 +12,8 @@ class ReadController extends Controller
 {
     public function laporanPenjualan(Request $request)
     {	
-    	$tanggal1 = Carbon::createFromFormat('m/d/Y', $request->tanggal1)->startOfDay();
-    	$tanggal2 = Carbon::createFromFormat('m/d/Y', $request->tanggal2)->endOfDay();
+    	$tanggal1 = Carbon::createFromFormat('m/d/Y', $request->tanggaldownload1)->startOfDay();
+    	$tanggal2 = Carbon::createFromFormat('m/d/Y', $request->tanggaldownload2)->endOfDay();
     	// dd($tanggal1,$tanggal2);
     	$result = Penjualan::whereBetween('tanggal_transaksi',[$tanggal1, $tanggal2])->with(['detail','pelanggan','kasir','giro','transfer','detail.barang'])->get();
     	$data['result'] = $result;

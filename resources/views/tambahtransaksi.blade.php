@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','CV Erlangga')
+@section('title','CV ERLANGGA PAJAK')
 <style>
  { box-sizing: border-box; }
 body {
@@ -286,7 +286,7 @@ $(document).ready(function(){
   $.ajax({
     type:"GET",
     dataType:"json",
-    url:"/erlangga_pajak/erlangga_pajak/public/search/barang/beli",
+    url:"/erlangga_pajak/public/search/barang/beli",
     success: function(data){
       // data = JSON.parse(data);
       console.log(data.result);
@@ -308,7 +308,7 @@ $(document).ready(function (){
     $.ajax({
         type:"GET",
         dataType:"json",
-        url:"/erlangga_pajak/erlangga_pajak/public/search/pelanggan",
+        url:"/erlangga_pajak/public/search/pelanggan",
         success: function(data){
             var nama = [];
             var result = [];

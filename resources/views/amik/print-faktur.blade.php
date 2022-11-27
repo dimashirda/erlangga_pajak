@@ -22,6 +22,9 @@
 		border-bottom: 4px double;
 		border-top: 4px double;
 	}
+	.double2{
+		border-top: 4px double;
+	}
 	.righted{
 		text-align: right;
 	}
@@ -57,7 +60,7 @@
 			<td width="40%">
 				<table>
 					<tr>
-						<td colspan="2">ERLANGGA BERKAH SURABAYA</td>
+						<td colspan="2">ERLANGGA BERKAH</td>
 					</tr>
 					<tr>
 						<td>Telp. 031-5991755,5929736</td>
@@ -85,7 +88,6 @@
 				</table>
 			</td>
 			<td width="20%" class="title"> 
-				FAKTUR
 			</td>
 			<td width="40%">
 				<table>
@@ -122,11 +124,11 @@
 		<thead>
 			<tr>
 				<td class="double centered" width="2%">No</td>
-				<td class="double centered" width="23%">NAMA BARANG</td>
-				<td class="double" width="10%">SATUAN</td>
+				<td class="double centered" width="37%">NAMA BARANG</td>
+				<td class="double" width="15%">SATUAN</td>
 				<td class="double" width="7%">JML</td>
 				<td class="double centered" width="19%">HARGA</td>
-				<td class="double" width="19%">PPN</td>
+				<td class="double" width="0%"></td>
 				<td class="double centered" width="20%">TOTAL</td>
 			</tr>
 		</thead>
@@ -142,20 +144,20 @@
 				<td>{{$item->barang->nama}}</td>
 				<td>{{$item->barang->satuan}}</td>
 				<td>{{$item->jumlah}}</td>
-				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">
-				@php $harga_satuan_real = $item->harga_satuan * 100 / 110; @endphp
+				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;">
+				@php $harga_satuan_real = $item->harga_satuan * 100 / 111; @endphp
 				{{
-					number_format($harga_satuan_real,0,",",".")
+					number_format($item->harga_satuan,0,",",".")
 				}}</a></td>
-				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">
+				<td><!-- <a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">
 				@php $PPN = ($item->harga_satuan - $harga_satuan_real); @endphp
 				{{
 					number_format($PPN,0,",",".") 
 				}}	
-				</a></td>
+				</a> --></td>
 				<!-- <td>@if(!empty($data['penjualan']->diskon)) <a style="text-align: left !important;"> Rp </a> <a style="float: right;">{{number_format($data['penjualan']->diskon,0,",",".")}} @else Rp 0 @endif </a></td> -->
 				<!-- <td>&nbsp;</td> -->
-				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;width: 65%;">{{number_format($item->harga_satuan * $item->jumlah,0,",",".")}}</a></td>
+				<td><a style="text-align: left !important;">Rp</a> <a style="float: right;">{{number_format($item->harga_satuan * $item->jumlah,0,",",".")}}</a></td>
 				@php $total += $item->harga_satuan * $item->jumlah; @endphp
 			</tr>
 			@php $i++; @endphp
@@ -165,8 +167,20 @@
 				<td colspan="7" class="dummy">.</td>
 			</tr>
 			<tr>
-				<td class="double righted bold" colspan="6"> TOTAL SELURUH : </td>
-				<td class="double bold"><a style="text-align: left !important;">Rp </a> <a style="float: right;">{{number_format($total,0,",",".")}}</a></td>
+				<td class="double2 righted bold" colspan="5"> TOTAL : </td>
+				<td class="double2 bold righted" colspan="2"><a style="float: left !important;">Rp </a> <a style="float: right;">
+				@php $total_real = $total * 100 / 111; @endphp	
+				{{number_format($total_real,0,",",".")}}</a></td>
+			</tr>
+			<tr>
+				<td class="righted bold" colspan="5">PPN :</td>
+				<td class="righted bold" colspan="2"><a style="float: left !important;">Rp </a> <a style="float: right;">
+				@php $ppn_all = $total * 11 / 111; @endphp
+				{{number_format($ppn_all,0,",",".")}}</a></td>
+			</tr>
+			<tr>
+				<td class="righted bold" colspan="5"> TOTAL SELURUH : </td>
+				<td class="righted bold"colspan="2"><a style="float: left !important;">Rp </a> <a style="float: right;">{{number_format($total,0,",",".")}}</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -186,7 +200,7 @@
 			<td width="40%">
 				<table>
 					<tr>
-						<td colspan="2">UD ERLANGGA SURABAYA</td>
+						<td colspan="2">ERLANGGA BERKAH</td>
 					</tr>
 					<tr>
 						<td>Telp. 031-5991755,5929736</td>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'CV ERLANGGA')
+@section('title', 'CV ERLANGGA PAJAK')
 
 @section('content_header')
     Homepage

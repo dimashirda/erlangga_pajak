@@ -76,7 +76,7 @@ class CreateController extends Controller
         $edit = Barang::where('id',$id)->first();
         $edit->kode = $data['kode_barang'];
         $edit->nama = $data['nama_barang'];
-        $edit->harga_jual = $data['harga_jual'] + ($data['harga_jual']*10/100);
+        $edit->harga_jual = $data['harga_jual'];
         $edit->satuan = $data['satuan_barang'];
         $edit->jenis = $data['jenis_barang'];
         if($edit->save()){
