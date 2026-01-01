@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use Carbon\Carbon;
 use Datetime;
 
-class InvoiceLaporanPenjualan implements FromView, WithEvents
+class ExcelStokBarang implements FromView, WithEvents
 {   
     use Exportable;
     /**
@@ -25,12 +25,12 @@ class InvoiceLaporanPenjualan implements FromView, WithEvents
                 $rows = $event->sheet->getDelegate()->toArray();
 
                 $event->sheet->getColumnDimension('A')->setWidth(7);
-                $event->sheet->getColumnDimension('B')->setWidth(15);
+                $event->sheet->getColumnDimension('B')->setWidth(30);
                 $event->sheet->getColumnDimension('C')->setWidth(10);
-                $event->sheet->getColumnDimension('D')->setWidth(30);
-                $event->sheet->getColumnDimension('E')->setWidth(30);
-                $event->sheet->getColumnDimension('F')->setWidth(30);
-                $event->sheet->getColumnDimension('G')->setWidth(15);
+                $event->sheet->getColumnDimension('D')->setWidth(10);
+                $event->sheet->getColumnDimension('E')->setWidth(10);
+                $event->sheet->getColumnDimension('F')->setWidth(10);
+                $event->sheet->getColumnDimension('G')->setWidth(10);
 
                 $event->sheet->styleCells(
                     'A1:G3',
@@ -116,7 +116,7 @@ class InvoiceLaporanPenjualan implements FromView, WithEvents
     public function view(): View
     {
         $data = $this->data;
-        //dd($data);
-        return view('laporan.laporan-penjualan',$data);
+        //dd($data['barang'][0]);
+        return view('laporan.list-barang',$data);
     }
 }

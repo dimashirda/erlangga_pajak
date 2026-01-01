@@ -19,6 +19,7 @@ class ReadController extends Controller
     	$data['result'] = $result;
     	$data['tanggal1'] = $tanggal1;
     	$data['tanggal2'] = $tanggal2;
+        //dd($data);
     	return (new InvoiceLaporanPenjualan($data))->download('Laporan_Penjualan.xlsx');
     }
 }

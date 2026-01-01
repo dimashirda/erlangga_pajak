@@ -16,7 +16,7 @@
     </tr>
     @foreach($result as $item)
         <tr>
-            <td>TA{{$item->id + 2000}}</td>
+            <td>TA{{$item->id + 20000}}</td>
             <td>{{$item->kasir->name}}</td>
             <td>{{$item->pelanggan->nama}}</td>
             <td>@if($item->jenis_penjualan == 1) 

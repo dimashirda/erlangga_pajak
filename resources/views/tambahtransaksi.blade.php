@@ -82,7 +82,7 @@ body {
                                   <td>
                                     <div class="autocomplete col-sm-5">
                                       <input class="form-control" 
-                                      id="myInput" type="text" name="namapelanggan" placeholder="Nama Pelanggan">
+                                      id="myInput" type="text" name="namapelanggan" placeholder="Nama Pelanggan" required>
                                       <input type="hidden" name="id_pelanggan" id="idpelanggan">
                                     </div>
                                   </td>

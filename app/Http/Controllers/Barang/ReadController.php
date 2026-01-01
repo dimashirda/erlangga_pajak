@@ -8,6 +8,8 @@ use App\Barang;
 use App\BarangDetail;
 use DataTables;
 use Auth;
+use Carbon\Carbon;
+use App\Exports\ExcelStokBarang;
 class ReadController extends Controller
 {
     public function all()
@@ -50,5 +52,19 @@ class ReadController extends Controller
         	})
         	->escapeColumns([])
             ->make(true);
+    }
+public function excelDownload(Request $request)
+    {   
+        // dd($request);
+        // dd($tanggal1,$tanggal2);
+         if(!empty($request->flag)) 
+        {
+            $data['flag'] = $request->flag;
+        }
+        $barang = Barang::all();
+        $data['barang'] = $barang;
+        $data['tanggal'] = Carbon::now()->format('d-M-Y');
+        //dd($data);
+        return (new ExcelStokBarang($data))->download('Stok_Barang.xlsx');
     }
 }

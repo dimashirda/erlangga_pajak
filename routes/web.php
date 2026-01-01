@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/barangdetail/edit/{id_barang}','Barang\CreateController@editDetail');
 	Route::get('/barangdetail/delete/{id_barang}','Barang\CreateController@deleteDetail');
 	Route::get('/barang/print','Barang\ViewController@printStok');
+	Route::get('/barang/excel','Barang\ReadController@excelDownload');
 
 	Route::get('/pelanggan','PelangganController@index');
 	Route::get('/pelanggan/all','PelangganController@all');

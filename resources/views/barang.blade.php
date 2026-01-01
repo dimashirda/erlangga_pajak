@@ -54,6 +54,9 @@
                         <div class="col-xs-2">
                             <a href="{{url('/barang/print?flag=1')}}" class='btn btn-primary'><i class="fa fa-print"></i> Print Stok Tersedia</a>
                         </div>
+                        <div class="col-xs-2">
+                            <a href="{{url('/barang/excel?flag=0')}}" class='btn btn-primary'><i class="fa fa-print"></i>Download Semua Stok</a>
+                        </div>
                     </div>
                     <br>
                     @if($acc->count())

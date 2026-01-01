@@ -81,7 +81,7 @@
                             <tr>
                             @if(!empty($a->total_satuan && $a->harga_satuan))
                             @php $number = number_format("$a->total_satuan",2,",",".");
-                            $harga_satuan_real = $a->harga_satuan * 100 / 110;
+                            $harga_satuan_real = $a->harga_satuan * 100 / 111;
                             $number2 = number_format("$harga_satuan_real",2,",",".");
                             $PPN = ($a->harga_satuan - $harga_satuan_real); 
                             $number3 = number_format("$PPN",2,",",".")@endphp
